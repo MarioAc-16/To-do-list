@@ -1,3 +1,3 @@
-Isnstrucciones para ejecutar la App
+Instrucciones para ejecutar la App
 
 1. Instalar los modulos con un npm install
