@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.scrolling {
+  max-height: 800px!important;
+  overflow-y: auto !important;
+  }
