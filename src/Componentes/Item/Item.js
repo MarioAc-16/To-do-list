@@ -4,14 +4,22 @@ import './Item.scss';
 import {
   removeTodo
 } from '../../reducers/todoSlice';
-import { useDispatch } from 'react-redux';
+import {
+  removeGoal
+} from '../../reducers/goalSlice';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 function Item(props) {
   const dispatch = useDispatch();
-
+  const option = useSelector ((state)=>state.option.value);
   const removeItem = (e) => {
     e.preventDefault();
-    dispatch(removeTodo(props.name));
+    if (option === 'tasks'){
+      dispatch(removeTodo(props.id));
+    }else{
+      dispatch(removeGoal(props.id));
+    }
   }
 
 

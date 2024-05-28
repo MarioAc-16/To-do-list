@@ -4,7 +4,12 @@ import './Form.scss'
 import {
   addTodo
 } from '../../reducers/todoSlice';
-import { useDispatch } from 'react-redux';
+
+import {
+  addGoal
+} from '../../reducers/goalSlice';
+
+import { useSelector, useDispatch } from 'react-redux';
 import { useRef } from 'react';
 
 function Formulario() {
@@ -14,9 +19,14 @@ function Formulario() {
 
   const dispatch = useDispatch();
 
+  const option = useSelector ((state)=>state.option.value);
   const addItem = (e) => {
     e.preventDefault();
+    if (option === "tasks"){
     dispatch(addTodo({'name':inputRefName.current.value, 'description':inputRefDescription.current.value, 'dueDate':inputRefDueDate.current.value}))
+    } else {
+      dispatch(addGoal({'name':inputRefName.current.value, 'description':inputRefDescription.current.value, 'dueDate':inputRefDueDate.current.value}))
+    }
   }
 
   return (
@@ -36,10 +46,10 @@ function Formulario() {
         <Form.Control type="date" placeholder=" " ref={inputRefDueDate}/>
       </Form.Group>
       <Button variant="info" type="submit" onClick={addItem}>
-        addGoal
+        Agregar
       </Button>
     </Form>
-  );
+  );                
 }
 
 export default Formulario;
